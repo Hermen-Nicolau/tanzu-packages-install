@@ -1,0 +1,12 @@
+Doc: https://docs.vmware.com/en/VMware-Tanzu-Packages/2024.2.1/tanzu-packages/packages-contour-super.html
+
+1. Create the namespace:
+- kubectl create ns tanzu-system-ingress
+2. Label the namespace:
+-  kubectl label --overwrite ns tanzu-system-ingress pod-security.kubernetes.io/enforce=privileged
+3. Create the contour-data-values.yaml
+- tanzu package available get contour.tanzu.vmware.com/1.23.5+vmware.1-tkg.1 --generate-default-values-fil
+4. Use the Tanzu CLI to install the latest available version of Contour.
+- tanzu package install contour -p contour.tanzu.vmware.com -v 1.23.5+vmware.1-tkg.1 --values-file contour-data-values.yaml -n tanzu-system-ingress
+5. Verify Contour installation:
+- kubectl -n tanzu-system-ingress get all
