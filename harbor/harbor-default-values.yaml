@@ -1,0 +1,124 @@
+cache:
+  enabled: false
+  expireHours: 24
+core:
+  replicas: 1
+enableContourHttpProxy: true
+hostname: harbor.yourdomain.com
+jobservice:
+  replicas: 1
+logLevel: info
+metrics:
+  core:
+    path: /metrics
+    port: 8001
+  enabled: false
+  exporter:
+    path: /metrics
+    port: 8001
+  jobservice:
+    path: /metrics
+    port: 8001
+  registry:
+    path: /metrics
+    port: 8001
+namespace: tanzu-system-registry
+network:
+  ipFamilies: []
+notary:
+  enabled: true
+persistence:
+  imageChartStorage:
+    azure:
+      accountkey: base64encodedaccountkey
+      accountname: accountname
+      container: containername
+      realm: core.windows.net
+    caBundleSecretName: ""
+    disableredirect: false
+    filesystem:
+      maxthreads: 100
+      rootdirectory: /storage
+    gcs:
+      bucket: bucketname
+      chunksize: 5242880
+      encodedkey: base64-encoded-json-key-file
+    oss:
+      accesskeyid: accesskeyid
+      accesskeysecret: accesskeysecret
+      bucket: bucketname
+      region: regionname
+    s3:
+      bucket: bucketname
+      encrypt: false
+      region: us-west-1
+      secure: true
+      skipverify: false
+      storageclass: STANDARD
+      v4auth: true
+    swift:
+      authurl: https://storage.myprovider.com/v3/auth
+      container: containername
+      password: password
+      username: username
+    type: filesystem
+  persistentVolumeClaim:
+    database:
+      accessMode: ReadWriteOnce
+      existingClaim: ""
+      size: 1Gi
+      storageClass: ""
+      subPath: ""
+    jobservice:
+      jobLog:
+        accessMode: ReadWriteOnce
+        existingClaim: ""
+        size: 1Gi
+        storageClass: ""
+        subPath: ""
+    redis:
+      accessMode: ReadWriteOnce
+      existingClaim: ""
+      size: 1Gi
+      storageClass: ""
+      subPath: ""
+    registry:
+      accessMode: ReadWriteOnce
+      existingClaim: ""
+      size: 10Gi
+      storageClass: ""
+      subPath: ""
+    trivy:
+      accessMode: ReadWriteOnce
+      existingClaim: ""
+      size: 5Gi
+      storageClass: ""
+      subPath: ""
+port:
+  https: 443
+proxy:
+  httpProxy: ""
+  httpsProxy: ""
+  noProxy: 127.0.0.1,localhost,.local,.internal
+pspNames: "null"
+registry:
+  replicas: 1
+trace:
+  enabled: false
+  jaeger:
+    endpoint: http://hostname:14268/api/traces
+  otel:
+    compression: false
+    endpoint: hostname:4318
+    insecure: true
+    timeout: 10
+    url_path: /v1/traces
+  provider: jaeger
+  sample_rate: 1
+trivy:
+  enabled: true
+  gitHubToken: ""
+  offlineScan: false
+  replicas: 1
+  skipUpdate: false
+  timeout: ""

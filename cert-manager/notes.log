@@ -1,0 +1,8 @@
+1. Create namespace:
+- kubectl create ns cert-manager
+
+2. Label the namespace
+- kubectl label --overwrite ns cert-manager pod-security.kubernetes.io/enforce=privileged
+
+3. Install the Cert Manager package.
+- tanzu package install cert-manager -p cert-manager.tanzu.vmware.com -n cert-manager -v  1.10.2+vmware.1-tkg.1

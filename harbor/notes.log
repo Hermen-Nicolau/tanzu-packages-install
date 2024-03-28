@@ -1,0 +1,11 @@
+Doc: https://docs.vmware.com/en/VMware-Tanzu-Packages/2024.2.1/tanzu-packages/packages-harbor-super.html
+
+1. Create the namespace:
+- kubectl create ns tanzu-system-registry
+2. Label the namespace:
+- kubectl label --overwrite ns tanzu-system-registry pod-security.kubernetes.io/enforce=privileged
+3. Get the default data values
+- tanzu package available get harbor.tanzu.vmware.com/2.7.1+vmware.1-tkg.1 --generate-default-values-file
+4. Edit the file with the correct values 
+5. Use the Tanzu CLI to install the latest available version of harbor
+- tanzu package install harbor -p harbor.tanzu.vmware.com --version 2.7.1+vmware.1-tkg.1 --values-file ./harbor-data-values.yaml --namespace tanzu-system-registry
